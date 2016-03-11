@@ -44,8 +44,14 @@ try:
                 inputs.append("HIGH ")
             else:
                 inputs.append(" LOW ")
+        GPIO.setup("P8_43", GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        userKey = "LOW "
+        if GPIO.input("P8_43"):
+            userKey = "HIGH"
         print gpios
         print inputs
+        print "\n  USER Button"
+        print "  " + userKey
         print "\nPress Ctrl+C to next step.\n"
         time.sleep(0.5)
         
